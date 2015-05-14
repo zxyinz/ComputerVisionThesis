@@ -5,13 +5,13 @@ swchar San::gloAToW(const sachar Data)
 {
 	return gloAToW((const sachar*)&Data,1)[0];
 }
-wstring San::gloAToW(const SStringA &strString)
+SStringW San::gloAToW(const SStringA &strString)
 {
 	return ::gloAToW(strString.c_str(),strString.length());
 }
-wstring San::gloAToW(const sachar* pString,int StringLength)
+SStringW San::gloAToW(const sachar* pString,int StringLength)
 {
-	wstring strDestString;
+	SStringW strDestString;
 	if (StringLength == -1)
 	{
 		StringLength = ::MultiByteToWideChar(CP_ACP, 0, pString, -1, nullptr, 0);
@@ -32,13 +32,13 @@ sachar San::gloWToA(const swchar Data,const sachar DefaultChar)
 {
 	return gloWToA((const swchar*)&Data,1,DefaultChar)[0];
 }
-string San::gloWToA(const SStringW &strString,const sachar DefaultChar)
+SStringA San::gloWToA(const SStringW &strString,const sachar DefaultChar)
 {
 	return ::gloWToA(strString.c_str(),strString.length(),DefaultChar);
 }
-string San::gloWToA(const swchar* pString,int StringLength,const sachar DefaultChar)
+SStringA San::gloWToA(const swchar* pString,int StringLength,const sachar DefaultChar)
 {
-	string strDestString;
+	SStringA strDestString;
 	int bUseDefaultChar=true;
 	if (StringLength == -1)
 	{
@@ -112,7 +112,7 @@ sachar San::gloTToA(const schar Data,const sachar DefaultChar)
 	return gloWToA((const schar*)Data,1,DefaultChar)[0];
 #endif
 }
-string San::gloTToA(const SString &strString,const sachar DefaultChar)
+SStringA San::gloTToA(const SString &strString,const sachar DefaultChar)
 {
 #ifndef _UNICODE
 	return strString;
@@ -120,7 +120,7 @@ string San::gloTToA(const SString &strString,const sachar DefaultChar)
 	return ::gloWToA(strString.c_str(),strString.length(),DefaultChar);
 #endif
 }
-string San::gloTToA(const schar* pString,int StringLength,const sachar DefaultChar)
+SStringA San::gloTToA(const schar* pString,int StringLength,const sachar DefaultChar)
 {
 #ifndef _UNICODE
 	return pString;
@@ -136,7 +136,7 @@ swchar San::gloTToW(const schar Data)
 	return Data;
 #endif
 }
-wstring San::gloTToW(const SString &strString)
+SStringW San::gloTToW(const SString &strString)
 {
 #ifndef _UNICODE
 	return gloAToW(strString.c_str(),strString.length());
@@ -144,84 +144,13 @@ wstring San::gloTToW(const SString &strString)
 	return strString;
 #endif
 }
-wstring San::gloTToW(const schar* pString,int StringLength)
+SStringW San::gloTToW(const schar* pString,int StringLength)
 {
 #ifndef _UNICODE
 	return gloAToW(pString,StringLength);
 #else
 	return pString;
 #endif
-}
-bool San::operator==(const SStringA &strStringA,const SStringA &strStringB)
-{
-	return (((int)strStringA.find(strStringB.c_str()))==0&&(strStringA.size()==strStringB.size()));
-}
-bool San::operator!=(const SStringA &strStringA,const SStringA &strStringB)
-{
-	return !(((int)strStringA.find(strStringB.c_str())==0)&&(strStringA.size()==strStringB.size()));
-}
-SStringA San::operator+(const SStringA &strStringA,const SStringA &strStringB)
-{
-	sachar *pschar=nullptr;
-	size_t Size=strStringA.size()+strStringB.size();
-	if(Size==0)
-	{
-		pschar=new sachar[1];
-		pschar[0]='\0';
-	}
-	else
-	{
-		pschar=new sachar[Size+1];
-		unsigned int StrASize=strStringA.size();
-		for(size_t seeka=0;seeka<StrASize;seeka=seeka+1)
-		{
-			pschar[seeka]=strStringA[seeka];
-		}
-		for(size_t seekb=0;seekb<strStringB.size();seekb=seekb+1)
-		{
-			pschar[seekb+StrASize]=strStringB[seekb];
-		}
-		pschar[Size]='\0';
-	}
-	SStringA strDestString=pschar;
-	delete[] pschar;
-	return strDestString;
-}
-bool San::operator==(const SStringW &strStringA,const SStringW &strStringB)
-{
-	return (((int)strStringA.find(strStringB.c_str())==0)&&(strStringA.size()==strStringB.size()));
-}
-bool San::operator!=(const SStringW &strStringA,const SStringW &strStringB)
-{
-	int Index=strStringA.find(strStringB.c_str());
-	return !(((int)strStringA.find(strStringB.c_str())==0)&&(strStringA.size()==strStringB.size()));
-}
-SStringW San::operator+(const SStringW &strStringA,const SStringW &strStringB)
-{
-	swchar *pschar=nullptr;
-	size_t Size=strStringA.size()+strStringB.size();
-	if(Size==0)
-	{
-		pschar=new swchar[1];
-		pschar[0]=L'\0';
-	}
-	else
-	{
-		pschar=new swchar[Size+1];
-		unsigned int StrASize=strStringA.size();
-		for(size_t seeka=0;seeka<StrASize;seeka=seeka+1)
-		{
-			pschar[seeka]=strStringA[seeka];
-		}
-		for(size_t seekb=0;seekb<strStringB.size();seekb=seekb+1)
-		{
-			pschar[seekb+StrASize]=strStringB[seekb];
-		}
-		pschar[Size]=L'\0';
-	}
-	SStringW strDestString=pschar;
-	delete[] pschar;
-	return strDestString;
 }
 SString San::gloIToS(const long long &Data, const unsigned int Radix)
 {
@@ -282,14 +211,14 @@ long long San::gloSToI(const SString &strString, const unsigned int Radix)
 }
 SString San::gloFToS(const double &Data, SString strFormat)
 {
-	schar string[512];
+	schar SStringA[512];
 	strFormat = _SSTR("%") + strFormat + _SSTR("f");
 #ifndef _UNICODE
-	::sprintf_s(string, 128, strFormat.c_str(), Data);
+	::sprintf_s(SStringA, 128, strFormat.c_str(), Data);
 #else
-	::swprintf_s(string, 128, strFormat.c_str(), Data);
+	::swprintf_s(SStringA, 128, strFormat.c_str(), Data);
 #endif
-	return string;
+	return SStringA;
 }
 double San::gloSToF(const SString &strString)
 {
@@ -299,18 +228,186 @@ double San::gloSToF(const SString &strString)
 	return ::_wtof(strString.c_str());
 #endif
 }
+bool San::operator==(const SStringA &strStringA, const SStringA &strStringB)
+{
+	return (((int) strStringA.find(strStringB.c_str())) == 0 && (strStringA.size() == strStringB.size()));
+}
+bool San::operator!=(const SStringA &strStringA, const SStringA &strStringB)
+{
+	return !(((int) strStringA.find(strStringB.c_str()) == 0) && (strStringA.size() == strStringB.size()));
+}
+bool San::operator==(const SStringW &strStringA, const SStringW &strStringB)
+{
+	return (((int) strStringA.find(strStringB.c_str()) == 0) && (strStringA.size() == strStringB.size()));
+}
+bool San::operator!=(const SStringW &strStringA, const SStringW &strStringB)
+{
+	int Index = strStringA.find(strStringB.c_str());
+	return !(((int) strStringA.find(strStringB.c_str()) == 0) && (strStringA.size() == strStringB.size()));
+}
+SStringA San::operator+(const SStringA &strStringA, const SStringA &strStringB)
+{
+	sachar *pschar = nullptr;
+	size_t Size = strStringA.size() + strStringB.size();
+	if (Size == 0)
+	{
+		pschar = new sachar[1];
+		pschar[0] = '\0';
+	}
+	else
+	{
+		pschar = new sachar[Size + 1];
+		unsigned int StrASize = strStringA.size();
+		for (size_t seeka = 0; seeka<StrASize; seeka = seeka + 1)
+		{
+			pschar[seeka] = strStringA[seeka];
+		}
+		for (size_t seekb = 0; seekb<strStringB.size(); seekb = seekb + 1)
+		{
+			pschar[seekb + StrASize] = strStringB[seekb];
+		}
+		pschar[Size] = '\0';
+	}
+	SStringA strDestString = pschar;
+	delete[] pschar;
+	return strDestString;
+}
+SStringW San::operator+(const SStringW &strStringA, const SStringW &strStringB)
+{
+	swchar *pschar = nullptr;
+	size_t Size = strStringA.size() + strStringB.size();
+	if (Size == 0)
+	{
+		pschar = new swchar[1];
+		pschar[0] = L'\0';
+	}
+	else
+	{
+		pschar = new swchar[Size + 1];
+		unsigned int StrASize = strStringA.size();
+		for (size_t seeka = 0; seeka<StrASize; seeka = seeka + 1)
+		{
+			pschar[seeka] = strStringA[seeka];
+		}
+		for (size_t seekb = 0; seekb<strStringB.size(); seekb = seekb + 1)
+		{
+			pschar[seekb + StrASize] = strStringB[seekb];
+		}
+		pschar[Size] = L'\0';
+	}
+	SStringW strDestString = pschar;
+	delete[] pschar;
+	return strDestString;
+}
+istream& San::operator>>(istream &InputStream, SStringA &strString)
+{
+	size_t Size = InputStream.tellg();
+
+	sachar* pBuffer= new (cSanSystemAllocator::alloc_mem((Size + 1) * sizeof(sachar))) sachar[Size + 1];
+	pBuffer[Size] = '\0';
+
+	InputStream.read(pBuffer, Size * sizeof(sachar));
+	strString = pBuffer;
+
+	cSanSystemAllocator::dealloc_mem(pBuffer);
+	return InputStream;
+}
+istream& San::operator>>(istream &InputStream, SStringW &strString)
+{
+	size_t Size = (InputStream.tellg() / sizeof(swchar)) + 1;
+
+	swchar* pBuffer = new (cSanSystemAllocator::alloc_mem((Size + 1) * sizeof(sachar))) swchar[Size + 1];
+	pBuffer[Size] = L'\0';
+
+	InputStream.read((char*) pBuffer, Size * sizeof(swchar));
+	strString = pBuffer;
+
+	cSanSystemAllocator::dealloc_mem(pBuffer);
+	return InputStream;
+}
+ostream& San::operator<<(ostream &OutputStream, const SStringA &strString)
+{
+	return OutputStream << strString.c_str();
+}
+ostream& San::operator<<(ostream &OutputStream, const SStringW &strString)
+{
+	return OutputStream << strString.c_str();
+}
+SStringA& San::operator>>(SStringA &strInputString, long long &Data)
+{
+	Data = ::gloSToI(::gloAToT(strInputString));
+
+	return strInputString;
+}
+SStringW& San::operator>>(SStringW &strInputString, long long &Data)
+{
+	Data = ::gloSToI(::gloWToT(strInputString));
+
+	return strInputString;
+}
+SStringA& San::operator>>(SStringA &strInputString, unsigned long long &Data)
+{
+	Data = ::gloSToI(::gloAToT(strInputString));
+
+	return strInputString;
+}
+SStringW& San::operator>>(SStringW &strInputString, unsigned long long &Data)
+{
+	Data = ::gloSToI(::gloWToT(strInputString));
+
+	return strInputString;
+}
+SStringA& San::operator>>(SStringA &strInputString, double &Data)
+{
+	Data = ::gloSToF(::gloAToT(strInputString));
+
+	return strInputString;
+}
+SStringW& San::operator>>(SStringW &strInputString, double &Data)
+{
+	Data = ::gloSToF(::gloWToT(strInputString));
+
+	return strInputString;
+}
+SStringA& San::operator<<(SStringA &strOutputString, const long long &Data)
+{
+	return strOutputString + ::gloTToA(::gloIToS(Data));
+}
+SStringW& San::operator<<(SStringW &strOutputString, const long long &Data)
+{
+	return strOutputString + ::gloTToW(::gloIToS(Data));
+}
+SStringA& San::operator<<(SStringA &strOutputString, const unsigned long long &Data)
+{
+	return strOutputString + ::gloTToA(::gloIToS(Data));
+}
+SStringW& San::operator<<(SStringW &strOutputString, const unsigned long long &Data)
+{
+	return strOutputString + ::gloTToW(::gloIToS(Data));
+}
+SStringA& San::operator<<(SStringA &strOutputString, const double &Data)
+{
+	return strOutputString + ::gloTToA(::gloFToS(Data));
+}
+SStringW& San::operator<<(SStringW &strOutputString, const double &Data)
+{
+	return strOutputString + ::gloTToW(::gloFToS(Data));
+}
+SStringA& San::operator<<(SStringA &strOutputString, const SStringA &strString)
+{
+	return strOutputString + strString;
+}
+SStringW& San::operator<<(SStringW &strOutputString, const SStringW &strString)
+{
+	return strOutputString + strString;
+}
 vector<SStringA> San::gloGetStringItemsA(const SStringA &strString, SStringA strStringMark)
 {
 	vector<SStringA> SubStringList;
-	SubStringList.clear();
-	if (strString.empty())
-	{
-		return SubStringList;
-	}
-	if (strStringMark.empty())
-	{
-		strStringMark = " \n\t";
-	}
+
+	if (strString.empty()){ return SubStringList; }
+	if (strStringMark.empty()){ strStringMark = " \n\t"; }
+
 	SStringA strTarget = strString + strStringMark[0];
 	size_t StrLength = strTarget.length();
 	size_t MarkSize = strStringMark.length();
@@ -335,15 +432,10 @@ vector<SStringA> San::gloGetStringItemsA(const SStringA &strString, SStringA str
 vector<SStringW> San::gloGetStringItemsW(const SStringW &strString, SStringW strStringMark)
 {
 	vector<SStringW> SubStringList;
-	SubStringList.clear();
-	if (strString.empty())
-	{
-		return SubStringList;
-	}
-	if (strStringMark.empty())
-	{
-		strStringMark = L" \n\t";
-	}
+
+	if (strString.empty()){ return SubStringList; }
+	if (strStringMark.empty()){ strStringMark = L" \n\t"; }
+
 	SStringW strTarget = strString + strStringMark[0];
 	size_t StrLength = strTarget.length();
 	size_t MarkSize = strStringMark.length();

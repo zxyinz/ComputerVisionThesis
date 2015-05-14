@@ -445,21 +445,24 @@ namespace San
 	public:
 		_stSANSTREAMEX(const uint32 Size = 2);
 		_stSANSTREAMEX(const uint32 Size, const ST &InitializeValue);
-		_stSANSTREAMEX(const _stSANSTREAMEX<ST>& Stream);
+		_stSANSTREAMEX(const _stSANSTREAMEX<ST> &Stream);
 		_stSANSTREAMEX(const ST* pStream, const uint32 BufSize);
 		~_stSANSTREAMEX();
 
 		//operators overload
-		_stSANSTREAMEX& operator=(const _stSANSTREAMEX<ST>& Stream);
-		_stSANSTREAMEX operator+(const _stSANSTREAMEX<ST>& Stream);
+		_stSANSTREAMEX& operator=(const _stSANSTREAMEX<ST> &Stream);
+
+		_stSANSTREAMEX operator+(const _stSANSTREAMEX<ST> &Stream);
 		_stSANSTREAMEX operator-(const uint32 Size);
-		bool operator==(const _stSANSTREAMEX<ST>& Stream);
-		bool operator!=(const _stSANSTREAMEX<ST>& Stream);
+
+		bool operator==(const _stSANSTREAMEX<ST> &Stream);
+		bool operator!=(const _stSANSTREAMEX<ST> &Stream);
+
 		const ST& operator[](const size_t Position) const;
 		ST& operator[](const size_t Position);
 
 		//Stream IO Function
-		uint32 iSetStream(const uint32 Offset, const _stSANSTREAMEX<ST>& Stream);
+		uint32 iSetStream(const uint32 Offset, const _stSANSTREAMEX<ST> &Stream);
 		uint32 iSetStream(const uint32 Offset, const ST* pBuffer, const uint32 BufSize);
 		uint32 iSetStream(const uint32 Offset, const ST &Data);
 		uint32 iGetStream(const uint32 Offset, ST* pBuffer, const uint32 BufSize) const;
@@ -471,19 +474,19 @@ namespace San
 		uint32 iClear(const ST &Data);
 
 		//C++ STL Style Iterator Function
-		typename _stSANSTREAMEX<ST>::iterator begin() const;
-		typename _stSANSTREAMEX<ST>::iterator end() const;
-		typename _stSANSTREAMEX<ST>::iterator find(const ST &Target) const;
+		iterator begin() const;
+		iterator end() const;
+		iterator find(const ST &Target) const;
 		uint32 size() const;
 
-		typename _stSANSTREAMEX<ST>::safe_iterator begin_s() const;
-		typename _stSANSTREAMEX<ST>::safe_iterator end_s() const;
-		typename _stSANSTREAMEX<ST>::safe_iterator find_s(const ST &Target) const;
+		safe_iterator begin_s() const;
+		safe_iterator end_s() const;
+		safe_iterator find_s(const ST &Target) const;
 		uint32 size_s() const;
 
-		typename _stSANSTREAMEX<ST>::byte_iterator begin_b() const;
-		typename _stSANSTREAMEX<ST>::byte_iterator end_b() const;
-		typename _stSANSTREAMEX<ST>::byte_iterator find_b(const uint8 &TargetByte) const;
+		byte_iterator begin_b() const;
+		byte_iterator end_b() const;
+		byte_iterator find_b(const uint8 &TargetByte) const;
 		uint32 size_b() const;
 	};
 
@@ -506,7 +509,7 @@ namespace San
 		}
 	}
 	template<class ST>
-	_stSANSTREAMEX<ST>::_stSANSTREAMEX(const _stSANSTREAMEX<ST>& Stream)
+	_stSANSTREAMEX<ST>::_stSANSTREAMEX(const _stSANSTREAMEX<ST> &Stream)
 		:pStream(nullptr),
 		Size(Stream.Size),
 		SizeInByte(sizeof(ST) *Size)
@@ -553,7 +556,7 @@ namespace San
 		this->SizeInByte = 0;
 	}
 	template<class ST>
-	_stSANSTREAMEX<ST>& _stSANSTREAMEX<ST>::operator=(const _stSANSTREAMEX<ST>& Stream)
+	_stSANSTREAMEX<ST>& _stSANSTREAMEX<ST>::operator=(const _stSANSTREAMEX<ST> &Stream)
 	{
 		if ((Stream.pStream == nullptr) || (Stream.Size == 0))
 		{
@@ -576,7 +579,7 @@ namespace San
 		return *this;
 	}
 	template<class ST>
-	_stSANSTREAMEX<ST> _stSANSTREAMEX<ST>::operator+(const _stSANSTREAMEX<ST>& Stream)
+	_stSANSTREAMEX<ST> _stSANSTREAMEX<ST>::operator+(const _stSANSTREAMEX<ST> &Stream)
 	{
 		if ((Stream.pStream == nullptr) || (Stream.Size == 0)){ return *this; }
 
@@ -600,7 +603,7 @@ namespace San
 		return *this;
 	}
 	template<class ST>
-	bool _stSANSTREAMEX<ST>::operator==(const _stSANSTREAMEX<ST>& Stream)
+	bool _stSANSTREAMEX<ST>::operator==(const _stSANSTREAMEX<ST> &Stream)
 	{
 		if (this->Size != Stream->Size){ return false; }
 
@@ -614,7 +617,7 @@ namespace San
 		return true;
 	}
 	template<class ST>
-	bool _stSANSTREAMEX<ST>::operator!=(const _stSANSTREAMEX<ST>& Stream)
+	bool _stSANSTREAMEX<ST>::operator!=(const _stSANSTREAMEX<ST> &Stream)
 	{
 		if (this->Size != Stream->Size){ return true; }
 
@@ -638,7 +641,7 @@ namespace San
 		return this->pStream[Position];
 	}
 	template<class ST>
-	uint32 _stSANSTREAMEX<ST>::iSetStream(const uint32 Offset, const _stSANSTREAMEX<ST>& Stream)
+	uint32 _stSANSTREAMEX<ST>::iSetStream(const uint32 Offset, const _stSANSTREAMEX<ST> &Stream)
 	{
 		uint32 StreamSize = Stream.Size;
 

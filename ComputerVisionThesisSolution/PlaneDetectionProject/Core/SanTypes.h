@@ -69,14 +69,6 @@ namespace San
 	static const float64	MIN_FLOAT64_VALUE	= DBL_MIN;
 	static const float64	MAX_FLOAT64_VALUE	= DBL_MAX;
 
-#ifdef _FLOAT_TYPE_DOUBLE
-	static const sfloat	MIN_FLOAT_VALUE	= MIN_FLOAT64_VALUE;
-	static const sfloat	MAX_FLOAT_VALUE = MAX_FLOAT64_VALUE;
-#else
-	static const sfloat	MIN_FLOAT_VALUE = MIN_FLOAT32_VALUE;
-	static const sfloat	MAX_FLOAT_VALUE = MAX_FLOAT32_VALUE;
-#endif
-
 	typedef uint32			SHANDLE32;
 	typedef uint64			SHANDLE64;
 	typedef uint32			SVALUE32;
