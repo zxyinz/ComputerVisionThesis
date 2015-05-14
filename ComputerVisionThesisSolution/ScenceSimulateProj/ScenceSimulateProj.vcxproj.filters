@@ -13,5 +13,306 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Core">
+      <UniqueIdentifier>{d2e39d20-ba4a-48ae-a1a6-e956cb6a62d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core">
+      <UniqueIdentifier>{901bb765-9826-4022-b0e2-db6a5c1f436a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Device">
+      <UniqueIdentifier>{4b36bb7a-5870-4845-8b51-3926d551be23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Device">
+      <UniqueIdentifier>{f858a3b7-0c1f-41d5-8bea-2ff3dd72682d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graphics">
+      <UniqueIdentifier>{66513411-2c3c-4b29-9ec8-28a8bad13c62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics">
+      <UniqueIdentifier>{e2ef5651-88e2-40cc-827b-29e748cc0d8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FileIO">
+      <UniqueIdentifier>{041d620d-3b9c-4c62-b50f-56dcb7b1051f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FileIO">
+      <UniqueIdentifier>{7263586b-787c-4f3f-8d67-7de96c589477}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Physics">
+      <UniqueIdentifier>{63350824-8c50-4e41-b48e-bfe7a0ce64b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physics">
+      <UniqueIdentifier>{9ad6ad45-ac09-4397-889b-c87dcc088a68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Network">
+      <UniqueIdentifier>{02170023-e05c-4838-a306-0b8caf9e6dd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graphics\GL">
+      <UniqueIdentifier>{884f623e-0db6-4a26-9ad5-d0c56fce5c85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\GL">
+      <UniqueIdentifier>{f7f4a578-9ecd-4816-8522-0bca08b1cad8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Network">
+      <UniqueIdentifier>{449798b1-2e12-472b-973e-6b37fbd6a0b4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Core\cMessageManager.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\cMessageManagerDef.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\cSanObject.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\cSanObjectDef.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\cSanObjectManager.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\cSanResourceManager.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\cSanResourceManagerDef.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\cVectorManager.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\cVectorManagerDef.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\MsgDef.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\SanContainer.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\SanMathematics.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\SanMemory.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\SanString.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\SanTypes.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\WinDataDef.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\cInputDeviceDX.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\cKeyBoardDevice.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\cMouseDevice.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\cSanRenderWindow.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\cSanTerminalDeviceWin.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\cSanVisualKeyBoard.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\cSanVisualMouse.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\cSanWindowObjectGL.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\cWindowBasic.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\cWindowBasicDX.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\cWindowBasicGL.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\SanDevices.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\cSanCameraDef.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\cSanLightDef.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\cSanLightManager.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\cSanShaderManagerDef.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\SanGraphics.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\GL\cSanCameraGL.h">
+      <Filter>Header Files\Graphics\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\GL\cSanFontGL.h">
+      <Filter>Header Files\Graphics\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\GL\cSanGLBufferManager.h">
+      <Filter>Header Files\Graphics\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\GL\cSanLightGL.h">
+      <Filter>Header Files\Graphics\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\GL\cSanObjRenderGL.h">
+      <Filter>Header Files\Graphics\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\GL\cSanShaderManagerGL.h">
+      <Filter>Header Files\Graphics\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="FileIO\cBMPReader.h">
+      <Filter>Header Files\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="FileIO\cOBJFileLoader.h">
+      <Filter>Header Files\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="FileIO\cTGAReader.h">
+      <Filter>Header Files\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="FileIO\cXMLLoader.h">
+      <Filter>Header Files\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="FileIO\FileLoader.h">
+      <Filter>Header Files\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="FileIO\SanFileIO.h">
+      <Filter>Header Files\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\SanNetwork.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\SanPhysics.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Core\cMessageManager.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\cSanObject.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\cSanObjectManager.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\cSanResourceManager.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\cVectorManager.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\SanContainer.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\SanMathematics.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\SanMemory.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\SanString.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Device\cInputDeviceDX.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Device\cKeyBoardDevice.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Device\cMouseDevice.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Device\cSanRenderWindow.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Device\cSanTerminalDeviceWin.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Device\cSanVisualKeyBoard.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Device\cSanVisualMouse.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Device\cSanWindowObjectGL.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Device\cWindowBasic.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Device\cWindowBasicDX.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Device\cWindowBasicGL.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\cSanCameraDef.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\cSanLightManager.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\cSanShaderManagerDef.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\SanGraphics.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\GL\cSanCameraGL.cpp">
+      <Filter>Source Files\Graphics\GL</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\GL\cSanGLBufferManager.cpp">
+      <Filter>Source Files\Graphics\GL</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\GL\cSanLightGL.cpp">
+      <Filter>Source Files\Graphics\GL</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\GL\cSanObjRenderGL.cpp">
+      <Filter>Source Files\Graphics\GL</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\GL\cSanShaderManagerGL.cpp">
+      <Filter>Source Files\Graphics\GL</Filter>
+    </ClCompile>
+    <ClCompile Include="FileIO\cBMPReader.cpp">
+      <Filter>Source Files\FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="FileIO\cOBJFileLoader.cpp">
+      <Filter>Source Files\FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="FileIO\cTGAReader.cpp">
+      <Filter>Source Files\FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="FileIO\cXMLLoader.cpp">
+      <Filter>Source Files\FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="FileIO\SanFileIO.cpp">
+      <Filter>Source Files\FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\SanNetwork.cpp">
+      <Filter>Source Files\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\SanPhysics.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneSimulation_Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
