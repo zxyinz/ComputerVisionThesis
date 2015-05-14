@@ -64,6 +64,46 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Core\Container\SanContainerStream.cpp" />
+    <ClCompile Include="Core\cVectorManager.cpp" />
+    <ClCompile Include="Core\SanContainer.cpp" />
+    <ClCompile Include="Core\SanMathematics.cpp" />
+    <ClCompile Include="Core\SanMemory.cpp" />
+    <ClCompile Include="Core\SanString.cpp" />
+    <ClCompile Include="Device\cSanTerminalDeviceWin.cpp" />
+    <ClCompile Include="Device\cSanWindowObjectGL.cpp" />
+    <ClCompile Include="Device\cWindowBasic.cpp" />
+    <ClCompile Include="FileIO\cBMPReader.cpp" />
+    <ClCompile Include="FileIO\cXMLLoader.cpp" />
+    <ClCompile Include="FileIO\SanFileIO.cpp" />
+    <ClCompile Include="Graphics\PixelBasedRenderFunc.cpp" />
+    <ClCompile Include="Graphics\SanGraphics.cpp" />
+    <ClCompile Include="PlaneDetection_Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Core\Container\SanContainerDef.h" />
+    <ClInclude Include="Core\Container\SanContainerStream.h" />
+    <ClInclude Include="Core\Container\SanContainerStreamT.h" />
+    <ClInclude Include="Core\Container\SanContainerTree.h" />
+    <ClInclude Include="Core\cVectorManager.h" />
+    <ClInclude Include="Core\cVectorManagerDef.h" />
+    <ClInclude Include="Core\MsgDef.h" />
+    <ClInclude Include="Core\SanContainer.h" />
+    <ClInclude Include="Core\SanMathematics.h" />
+    <ClInclude Include="Core\SanMemory.h" />
+    <ClInclude Include="Core\SanString.h" />
+    <ClInclude Include="Core\SanTypes.h" />
+    <ClInclude Include="Core\WinDataDef.h" />
+    <ClInclude Include="Device\cSanTerminalDeviceWin.h" />
+    <ClInclude Include="Device\cSanWindowObjectGL.h" />
+    <ClInclude Include="Device\cWindowBasic.h" />
+    <ClInclude Include="Device\SanDevices.h" />
+    <ClInclude Include="FileIO\cBMPReader.h" />
+    <ClInclude Include="FileIO\cXMLLoader.h" />
+    <ClInclude Include="FileIO\FileLoader.h" />
+    <ClInclude Include="FileIO\SanFileIO.h" />
+    <ClInclude Include="Graphics\PixelBasedRenderFunc.h" />
+    <ClInclude Include="Graphics\SanGraphics.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
