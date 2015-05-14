@@ -78,6 +78,9 @@
     <ClCompile Include="FileIO\SanFileIO.cpp" />
     <ClCompile Include="Graphics\PixelBasedRenderFunc.cpp" />
     <ClCompile Include="Graphics\SanGraphics.cpp" />
+    <ClCompile Include="ML\cArtificialNeuralNetworkAlgorithm.cpp" />
+    <ClCompile Include="ML\cDeepNeuralNetworkAlgorithm.cpp" />
+    <ClCompile Include="ML\cRestrictedRoltzmannMachineAlgorithm.cpp" />
     <ClCompile Include="PlaneDetection_Main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -104,6 +107,11 @@
     <ClInclude Include="FileIO\SanFileIO.h" />
     <ClInclude Include="Graphics\PixelBasedRenderFunc.h" />
     <ClInclude Include="Graphics\SanGraphics.h" />
+    <ClInclude Include="ML\cArtificialNeuralNetworkAlgorithm.h" />
+    <ClInclude Include="ML\cDeepNeuralNetworkAlgorithm.h" />
+    <ClInclude Include="ML\cKMeansAlgorithm.h" />
+    <ClInclude Include="ML\cRestrictedBoltzmannMachineAlgorithm.h" />
+    <ClInclude Include="RenderSystem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

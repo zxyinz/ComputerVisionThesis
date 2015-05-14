@@ -102,6 +102,15 @@
     <ClCompile Include="FileIO\SanFileIO.cpp">
       <Filter>Source Files\FileIO</Filter>
     </ClCompile>
+    <ClCompile Include="ML\cArtificialNeuralNetworkAlgorithm.cpp">
+      <Filter>Source Files\ML</Filter>
+    </ClCompile>
+    <ClCompile Include="ML\cDeepNeuralNetworkAlgorithm.cpp">
+      <Filter>Source Files\ML</Filter>
+    </ClCompile>
+    <ClCompile Include="ML\cRestrictedRoltzmannMachineAlgorithm.cpp">
+      <Filter>Source Files\ML</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\cVectorManager.h">
@@ -172,6 +181,21 @@
     </ClInclude>
     <ClInclude Include="FileIO\SanFileIO.h">
       <Filter>Header Files\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="ML\cArtificialNeuralNetworkAlgorithm.h">
+      <Filter>Header Files\ML</Filter>
+    </ClInclude>
+    <ClInclude Include="ML\cDeepNeuralNetworkAlgorithm.h">
+      <Filter>Header Files\ML</Filter>
+    </ClInclude>
+    <ClInclude Include="ML\cRestrictedBoltzmannMachineAlgorithm.h">
+      <Filter>Header Files\ML</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ML\cKMeansAlgorithm.h">
+      <Filter>Header Files\ML</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
