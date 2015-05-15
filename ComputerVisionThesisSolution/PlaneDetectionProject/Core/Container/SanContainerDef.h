@@ -24,7 +24,7 @@ namespace San
 		SString	description;
 		SVALUE	value;
 	public:
-		stSANUNKNOWN(const SString &strDesc = SString(""), const SVALUE &Value = 0);
+		stSANUNKNOWN(const SString &strDesc = SString(), const SVALUE &Value = 0);
 		~stSANUNKNOWN();
 
 		bool operator==(const stSANUNKNOWN &Variable) const;
@@ -37,10 +37,10 @@ namespace San
 	struct _SANUNKNOWN : public _smemobj<_Allocator>
 	{
 	public:
-		/*ST1 first;
-		ST2 second;*/
-		union{ ST1 description; ST1 first; };
-		union{ ST2 value; ST2 second; };
+		ST1 first;
+		ST2 second;
+		/*union{ ST1 description; ST1 first; };
+		union{ ST2 value; ST2 second; };*/
 	public:
 		_SANUNKNOWN();
 		_SANUNKNOWN(const ST1 &First, const ST2 &Second);
@@ -107,7 +107,7 @@ namespace San
 	public:
 		_SANATOMIC(const ST &Obj);
 		_SANATOMIC(const _SANATOMIC<ST, _Allocator> &LockObj) = delete;
-		~_SANLOCKOBJ();
+		~_SANATOMIC();
 
 		_SANATOMIC& operator=(const _SANATOMIC<ST, _Allocator> &LockObj) = delete;
 
@@ -138,19 +138,19 @@ namespace San
 		return *this;
 	}
 	template<class ST, class _Allocator>
-	_SANATOMIC<ST, _Allocator>& _SANATOMIC<ST, _Allocator>::operator+(const ST &Obj)
+	_SANATOMIC<ST, _Allocator> _SANATOMIC<ST, _Allocator>::operator+(const ST &Obj)
 	{
 		this->Obj = this->Obj + Obj;
 		return *this;
 	}
 	template<class ST, class _Allocator>
-	_SANATOMIC<ST, _Allocator>& _SANATOMIC<ST, _Allocator>::operator-(const ST &Obj)
+	_SANATOMIC<ST, _Allocator> _SANATOMIC<ST, _Allocator>::operator-(const ST &Obj)
 	{
 		this->Obj = this->Obj - Obj;
 		return *this;
 	}
 	template<class ST, class _Allocator>
-	_SANATOMIC<ST, _Allocator>& _SANATOMIC<ST, _Allocator>::operator/(const ST &Obj)
+	_SANATOMIC<ST, _Allocator> _SANATOMIC<ST, _Allocator>::operator/(const ST &Obj)
 	{
 		this->Obj = this->Obj / Obj;
 		return *this;

@@ -12,7 +12,7 @@ namespace San
 	{
 		SStringW Name;
 		SStringW Value;
-		list<stSANUNKNOWNEX<SStringW, SStringW>> Attributes;
+		list<_spair<SStringW, SStringW>> Attributes;
 
 	};
 	typedef stXMLELEMENT	XMLELEMENT;
@@ -24,7 +24,7 @@ namespace San
 		fstream* m_pFile;
 		stSANTREEEX<XMLELEMENT>* m_pRoot;
 		stSANTREEEX<XMLELEMENT>* m_pCurrentNode;
-		list<stSANUNKNOWNEX<SStringW, SStringW>>::iterator m_pCurrentAttribute;
+		list<_spair<SStringW, SStringW>>::iterator m_pCurrentAttribute;
 	public:
 		list<SString> m_ErrorList;
 	protected:

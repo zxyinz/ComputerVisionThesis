@@ -26,6 +26,17 @@ namespace San
 	using _soctree = _stSANOCTREE<ST>;
 #pragma endregion
 
+	template<class ST>
+	struct stSANTREEEX
+	{
+		stSANTREEEX<ST>*			p_trunk;
+		vector<stSANTREEEX<ST>*>	p_offshootlist;
+		ST		data;
+		uint32	weight;
+		uint32	identify;
+		uint32	listsize;
+	};
+
 #pragma region San general tree structure defination
 	template<class ST>
 	struct _stSANTREEEX

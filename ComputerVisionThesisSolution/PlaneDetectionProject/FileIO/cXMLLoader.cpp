@@ -19,7 +19,7 @@ bool cXMLLoader::iLoadXMLFile(SString strFilePath)
 		this->_PushError(_SSTR("Error:	The XML file already exits"));
 		return false;
 	}
-	this->m_pFile = new fstream(strFilePath, ios::binary | ios::in, 0x40);
+	this->m_pFile = new fstream(strFilePath.c_str(), ios::binary | ios::in, 0x40);
 	if (this->m_pFile == nullptr)
 	{
 		this->_PushError(_SSTR("Error:	Faild to load XML file in path: ") + strFilePath);
@@ -210,7 +210,7 @@ bool cXMLLoader::_CreateNode(swchar* pBuffer, uint32 BufferSize, stSANTREEEX<XML
 	pItemNode->listsize = 0;
 	pItemNode->p_offshootlist.clear();
 	pItem++;
-	stSANUNKNOWNEX<SStringW, SStringW> Attribute;
+	_spair<SStringW, SStringW> Attribute;
 	sint seek;
 	while (pItem != ItemList.end())
 	{
@@ -220,14 +220,14 @@ bool cXMLLoader::_CreateNode(swchar* pBuffer, uint32 BufferSize, stSANTREEEX<XML
 			this->_PushError(_SSTR("Error:	Wrong XML format, attribute format miss match.\n\tMiss: '='\n\tNode: ") + ::gloWToT(pItemNode->data.Name));
 			return false;
 		}
-		Attribute.description = this->_StringTranslate(pItem->substr(0, seek));
-		Attribute.value = pItem->substr(seek + 1, pItem->length() - seek - 1);
-		if ((Attribute.value.c_str()[0] != L'"') || (Attribute.value.c_str()[Attribute.value.length() - 1] != L'"'))
+		Attribute.first = this->_StringTranslate(pItem->substr(0, seek));
+		Attribute.second = pItem->substr(seek + 1, pItem->length() - seek - 1);
+		if ((Attribute.second.c_str()[0] != L'"') || (Attribute.second.c_str()[Attribute.second.length() - 1] != L'"'))
 		{
 			this->_PushError(_SSTR("Error:	Wrong XML format, attribute format miss match.\n\tMiss: '\"'\n\tNode: ") + ::gloWToT(pItemNode->data.Name));
 			return false;
 		}
-		Attribute.value = this->_StringTranslate(Attribute.value.substr(1, Attribute.value.length() - 2));
+		Attribute.second = this->_StringTranslate(Attribute.second.substr(1, Attribute.second.length() - 2));
 		pItemNode->data.Attributes.insert(pItemNode->data.Attributes.end(), Attribute);
 		pItem++;
 	}
@@ -655,14 +655,14 @@ bool cXMLLoader::iSetToAttribute(SString strAttributeName)
 		this->_PushError(_SSTR("Error:	The current node attribute list is empty"));
 		return false;
 	}
-	if ((sint) (this->m_pCurrentAttribute->description.find(::gloTToW(strAttributeName))) == 0)
+	if ((sint) (this->m_pCurrentAttribute->first.find(::gloTToW(strAttributeName))) == 0)
 	{
 		return true;
 	}
-	list<stSANUNKNOWNEX<SStringW, SStringW>>::iterator pItem = this->m_pCurrentNode->data.Attributes.begin();
+	list<_spair<SStringW, SStringW>>::iterator pItem = this->m_pCurrentNode->data.Attributes.begin();
 	while (pItem != this->m_pCurrentNode->data.Attributes.end())
 	{
-		if ((sint) (pItem->description.find(::gloTToW(strAttributeName))) == 0)
+		if ((sint) (pItem->first.find(::gloTToW(strAttributeName))) == 0)
 		{
 			break;
 		}
@@ -725,7 +725,7 @@ SString cXMLLoader::iGetAttributeName()
 		this->_PushError(_SSTR("Error:	The current node attribute list is empty"));
 		return _SSTR("");
 	}
-	return ::gloWToT(this->m_pCurrentAttribute->description);
+	return ::gloWToT(this->m_pCurrentAttribute->first);
 }
 SString cXMLLoader::iGetAttributeValue(SString strDefault)
 {
@@ -744,7 +744,7 @@ SString cXMLLoader::iGetAttributeValue(SString strDefault)
 		this->_PushError(_SSTR("Error:	The current node attribute list is empty"));
 		return strDefault;
 	}
-	return ::gloWToT(this->m_pCurrentAttribute->value);
+	return ::gloWToT(this->m_pCurrentAttribute->second);
 }
 SString cXMLLoader::iGetAttributeValuebyName(SString strAttributeName, SString strDefault)
 {
@@ -768,10 +768,10 @@ SString cXMLLoader::iGetAttributeValuebyName(SString strAttributeName, SString s
 		this->_PushError(_SSTR("Error:	The current node attribute list is empty"));
 		return strDefault;
 	}
-	list<stSANUNKNOWNEX<SStringW, SStringW>>::iterator pItem = this->m_pCurrentNode->data.Attributes.begin();
+	list<_spair<SStringW, SStringW>>::iterator pItem = this->m_pCurrentNode->data.Attributes.begin();
 	while (pItem != this->m_pCurrentNode->data.Attributes.end())
 	{
-		if ((sint) (pItem->description.find(::gloTToW(strAttributeName))) == 0)
+		if ((sint) (pItem->first.find(::gloTToW(strAttributeName))) == 0)
 		{
 			break;
 		}
@@ -782,7 +782,7 @@ SString cXMLLoader::iGetAttributeValuebyName(SString strAttributeName, SString s
 		this->_PushError(_SSTR("Error:	Can't find attribute ") + strAttributeName + _SSTR(" in node ") + ::gloWToT(this->m_pCurrentNode->data.Name));
 		return strDefault;
 	}
-	return ::gloWToT(pItem->value);
+	return ::gloWToT(pItem->second);
 }
 SString cXMLLoader::iGetFileCodeType()
 {

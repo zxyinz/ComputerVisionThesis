@@ -25,14 +25,8 @@
     <Filter Include="Source Files\Device">
       <UniqueIdentifier>{2843055c-eeab-4d76-913f-543dfa3e1652}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Core\Mathematics">
-      <UniqueIdentifier>{8bf97ae1-bb3d-482c-ab2f-1edd334e9664}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Core\Container">
       <UniqueIdentifier>{35f2225d-da27-4cb1-86f8-80c0cf4efa37}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Core\Mathematics">
-      <UniqueIdentifier>{c54ced47-346e-4d79-87f7-70d9235ad35b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Core\Container">
       <UniqueIdentifier>{ae659841-a18e-49d6-8696-e5ec2bb272e8}</UniqueIdentifier>
@@ -117,9 +111,6 @@
     <ClCompile Include="ML\cRestrictedRoltzmannMachineAlgorithm.cpp">
       <Filter>Source Files\ML</Filter>
     </ClCompile>
-    <ClCompile Include="Core\cSanLogManager.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
     <ClCompile Include="Core\Container\SanContainerDef.cpp">
       <Filter>Source Files\Core\Container</Filter>
     </ClCompile>
@@ -131,12 +122,6 @@
     </ClCompile>
     <ClCompile Include="Core\Memory\cSanStackManager.cpp">
       <Filter>Source Files\Core\Memory</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\Mathematics\SanMathematicsMatrix.cpp">
-      <Filter>Source Files\Core\Mathematics</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\Mathematics\SanMathematicsVector.cpp">
-      <Filter>Source Files\Core\Mathematics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -224,9 +209,6 @@
     <ClInclude Include="ML\cKMeansAlgorithm.h">
       <Filter>Header Files\ML</Filter>
     </ClInclude>
-    <ClInclude Include="Core\cSanLogManager.h">
-      <Filter>Header Files\Core</Filter>
-    </ClInclude>
     <ClInclude Include="Core\Memory\cSanMemoryManager.h">
       <Filter>Header Files\Core\Memory</Filter>
     </ClInclude>
@@ -238,18 +220,6 @@
     </ClInclude>
     <ClInclude Include="Core\Memory\cSanStackManager.h">
       <Filter>Header Files\Core\Memory</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Mathematics\SanMathematicsDef.h">
-      <Filter>Header Files\Core\Mathematics</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Mathematics\SanMathematicsMatrix.h">
-      <Filter>Header Files\Core\Mathematics</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Mathematics\SanMathematicsVector.h">
-      <Filter>Header Files\Core\Mathematics</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Mathematics\SanMathematicsVectorT.h">
-      <Filter>Header Files\Core\Mathematics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

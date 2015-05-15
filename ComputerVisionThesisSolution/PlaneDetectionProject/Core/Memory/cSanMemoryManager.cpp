@@ -72,7 +72,7 @@ void* san_new(const size_t size,void* buffer,const size_t buf_size,const int ind
 	case SMAT_SSM:
 		if(index<0)
 		{
-			std::srand(std::time(0));
+			std::srand(time(0));
 			ptr=_ssm_new(size,buffer,buf_size,rand()%SSM_PAGE_LIST_SIZE);
 			if(ptr==nullptr)
 			{

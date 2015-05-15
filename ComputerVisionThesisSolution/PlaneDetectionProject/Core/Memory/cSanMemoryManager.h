@@ -1,6 +1,7 @@
 //Project: San Lab Game Engine
 //Version: 2.1.1
 //Debug State: Add allocator
+#include"time.h"
 #include"cSanMemoryManagerDef.h"
 #include"cSanStackManager.h"
 #pragma once

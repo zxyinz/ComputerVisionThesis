@@ -19,7 +19,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -70,10 +70,7 @@
   <ItemGroup>
     <ClCompile Include="Core\Container\SanContainerDef.cpp" />
     <ClCompile Include="Core\Container\SanContainerStream.cpp" />
-    <ClCompile Include="Core\cSanLogManager.cpp" />
     <ClCompile Include="Core\cVectorManager.cpp" />
-    <ClCompile Include="Core\Mathematics\SanMathematicsMatrix.cpp" />
-    <ClCompile Include="Core\Mathematics\SanMathematicsVector.cpp" />
     <ClCompile Include="Core\Memory\cSanMemoryManager.cpp" />
     <ClCompile Include="Core\Memory\cSanMemoryManagerAlgorithms.cpp" />
     <ClCompile Include="Core\Memory\cSanStackManager.cpp" />
@@ -99,13 +96,8 @@
     <ClInclude Include="Core\Container\SanContainerStream.h" />
     <ClInclude Include="Core\Container\SanContainerStreamT.h" />
     <ClInclude Include="Core\Container\SanContainerTree.h" />
-    <ClInclude Include="Core\cSanLogManager.h" />
     <ClInclude Include="Core\cVectorManager.h" />
     <ClInclude Include="Core\cVectorManagerDef.h" />
-    <ClInclude Include="Core\Mathematics\SanMathematicsDef.h" />
-    <ClInclude Include="Core\Mathematics\SanMathematicsMatrix.h" />
-    <ClInclude Include="Core\Mathematics\SanMathematicsVector.h" />
-    <ClInclude Include="Core\Mathematics\SanMathematicsVectorT.h" />
     <ClInclude Include="Core\Memory\cSanMemoryManager.h" />
     <ClInclude Include="Core\Memory\cSanMemoryManagerAlgorithms.h" />
     <ClInclude Include="Core\Memory\cSanMemoryManagerDef.h" />

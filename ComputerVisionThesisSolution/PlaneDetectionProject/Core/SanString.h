@@ -16,11 +16,11 @@ namespace San
 
 	typedef char	sachar;
 	typedef wchar_t	swchar;
-	//typedef string	SStringA;
-	//typedef wstring	SStringW;
+	typedef string	SStringA;
+	typedef wstring	SStringW;
 
-	typedef basic_string<sachar, char_traits<sachar>, cSanSTLAllocator<sachar>>	SStringA;
-	typedef basic_string<swchar, char_traits<swchar>, cSanSTLAllocator<swchar>>	SStringW;
+	/*typedef basic_string<sachar, char_traits<sachar>, cSanSTLAllocator<sachar>>	SStringA;
+	typedef basic_string<swchar, char_traits<swchar>, cSanSTLAllocator<swchar>>	SStringW;*/
 
 	template<template<class ST> class _Allocator> using _SStringA = basic_string<sachar, char_traits<sachar>, _Allocator<sachar>>;
 	template<template<class ST> class _Allocator> using _SStringW = basic_string<swchar, char_traits<swchar>, _Allocator<swchar>>;

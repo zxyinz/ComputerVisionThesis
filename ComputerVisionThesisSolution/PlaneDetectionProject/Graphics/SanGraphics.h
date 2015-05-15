@@ -401,8 +401,8 @@ namespace San
 		//typedef list<lpSANOBJECT>	SANOBJECTLIST;
 		//typedef list<lpSANOBJECT>*	lpSANOBJECTLIST;
 
-		typedef stSANUNKNOWNEX<SString,SANOBJECTLIST>	SANMESH;
-		typedef stSANUNKNOWNEX<SString,SANOBJECTLIST>*	lpSANMESH;
+		typedef _spair<SString,SANOBJECTLIST>	SANMESH;
+		typedef _spair<SString,SANOBJECTLIST>*	lpSANMESH;
 		typedef list<SANMESH>	SANMESHLIST;
 		typedef list<SANMESH>*	lpSANMESHLIST;
 #endif
