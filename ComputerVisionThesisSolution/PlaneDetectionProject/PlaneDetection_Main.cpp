@@ -1,12 +1,26 @@
 #include"iostream"
+#include"thread"
 #include"Core\SanTypes.h"
 #include"Device\cSanTerminalDeviceWin.h"
 #include"Device\cSanWindowObjectGL.h"
 #include"FileIO\cBMPReader.h"
+#include"PlaneDetection.h"
 using namespace std;
 using namespace San;
 using namespace San::Device;
 using namespace San::FileIOStream;
+uint32 WindowRenderFunc(uint8* pBuffer,const uint32 BufferWidth, const uint32 BufferHeight);
+uint32 DebugWindowRenderFunc(uint8* pBuffer, const uint32 BufferWidth, const uint32 BufferHeight);
+
+uint32 RenderBufferWidth = 640;
+uint32 RenderBufferHeight = 480;
+
+uint32 DebugBufferWidth = 640;
+uint32 DebugBufferHeight = 480;
+
+_sstream<uint8> RenderBuffer(RenderBufferWidth * RenderBufferHeight * 4, 0.0);
+_sstream<uint8> DebugBuffer(DebugBufferWidth * DebugBufferHeight * 4, 0.0);
+
 int main(int argc, char** argv)
 {
 	bool bUseTCPConnection = false; // -tcp [ip address] [port]
@@ -19,12 +33,9 @@ int main(int argc, char** argv)
 
 	sachar Buffer[1024];
 
-	uint32 RenderBufferWidth = 640;
-	uint32 RenderBufferHeight = 480;
-	_sstream<uint8> RenderBuffer(RenderBufferWidth * RenderBufferHeight * 4, 0.0);
-
 	cSanTerminalDevice Terminal(_SSTR("San Plane Detection Terminal"));
 
+#pragma region Command analysis
 	if (argc >=  3)
 	{
 		if (SStringA(argv[1]) == "-tcp")
@@ -95,6 +106,7 @@ int main(int argc, char** argv)
 		Terminal.iOutputString(_SSTR("Error: Invalid command, -tcp and -img are conflict with each other\r\n"), STC_WHITE, STC_RED);
 		return 1;
 	}
+#pragma endregion
 
 	//Build TCP connection
 	if (bUseTCPConnection)
@@ -130,13 +142,36 @@ int main(int argc, char** argv)
 		}
 	}
 
+	//Resize debug buffer
+	DebugBufferWidth = (RenderBufferWidth / 2 + (RenderBufferWidth % 2)) * 2;
+	DebugBufferHeight = (RenderBufferHeight / 2 + (RenderBufferHeight % 2)) * 2;
+
+	DebugBuffer.iReSizeStream(DebugBufferWidth*DebugBufferHeight * 4);
+	DebugBuffer.iClear(0);
+
+	//Create window
+	::thread WindowRenderThread(WindowRenderFunc, RenderBuffer.pStream, RenderBufferWidth, RenderBufferHeight);
+
+	::Sleep(100);
+
+	::thread DebugWindowRenderThread(DebugWindowRenderFunc, DebugBuffer.pStream, DebugBufferWidth, DebugBufferHeight);
+
+	//Plane detection
+	PlaneDetectionFunc(RenderBuffer, RenderBufferWidth, RenderBufferHeight, DebugBuffer, DebugBufferWidth, DebugBufferHeight);
+
+	::system("pause");
+
+	return 0;
+}
+uint32 WindowRenderFunc(uint8* pBuffer,const uint32 BufferWidth, const uint32 BufferHeight)
+{
 	SANWINDEVDESC WinDesc;
 	WinDesc.str_title = _SSTR("Plane Detection Render Window");
-	WinDesc.win_width = RenderBufferWidth;
-	WinDesc.win_height = RenderBufferHeight;
-	WinDesc.win_fullwidth = RenderBufferWidth;
-	WinDesc.win_fullheight = RenderBufferHeight;
-	WinDesc.win_classname = _SSTR("PlaneDetectionRenderWIndow");
+	WinDesc.win_width = BufferWidth;
+	WinDesc.win_height = BufferHeight;
+	WinDesc.win_fullwidth = BufferWidth;
+	WinDesc.win_fullheight = BufferHeight;
+	WinDesc.win_classname = _SSTR("PlaneDetectionRenderWindow");
 	WinDesc.b_win_fullscreen = false;
 	WinDesc.b_win_has_edge = true;
 	WinDesc.b_use_inifile = false;
@@ -144,9 +179,32 @@ int main(int argc, char** argv)
 
 	cSanWindowObject RenderWindow(_SSTR("Plane Detection Render Window"), WinDesc, true);
 
-	RenderWindow.iMountWindowRenderBuffer(RenderBuffer.pStream, RenderBufferWidth, RenderBufferHeight, 4, true);
+	RenderWindow.iMountWindowRenderBuffer(pBuffer, BufferWidth, BufferHeight, 4, true);
 	//RenderWindow.iRegisterMessageFunc(WindowMessageProcessFunc);
 	RenderWindow.iCreateWindowObject(1);
+	RenderWindow.iWinMain(::GetModuleHandle(nullptr), nullptr, nullptr, SW_SHOWNORMAL);
+
+	return 0;
+}
+uint32 DebugWindowRenderFunc(uint8* pBuffer,const uint32 BufferWidth, const uint32 BufferHeight)
+{
+	SANWINDEVDESC WinDesc;
+	WinDesc.str_title = _SSTR("Plane Detection Debug Window");
+	WinDesc.win_width = BufferWidth;
+	WinDesc.win_height = BufferHeight;
+	WinDesc.win_fullwidth = BufferWidth;
+	WinDesc.win_fullheight = BufferHeight;
+	WinDesc.win_classname = _SSTR("PlaneDetectionDebugWindow");
+	WinDesc.b_win_fullscreen = false;
+	WinDesc.b_win_has_edge = true;
+	WinDesc.b_use_inifile = false;
+	WinDesc.render_fps = 30.0;
+
+	cSanWindowObject RenderWindow(_SSTR("Plane Detection Debug Window"), WinDesc, true);
+
+	RenderWindow.iMountWindowRenderBuffer(pBuffer, BufferWidth, BufferHeight, 4, false);
+	//RenderWindow.iRegisterMessageFunc(WindowMessageProcessFunc);
+	RenderWindow.iCreateWindowObject(2);
 	RenderWindow.iWinMain(::GetModuleHandle(nullptr), nullptr, nullptr, SW_SHOWNORMAL);
 
 	return 0;

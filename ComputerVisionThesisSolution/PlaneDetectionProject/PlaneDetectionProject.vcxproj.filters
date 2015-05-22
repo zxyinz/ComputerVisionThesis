@@ -221,5 +221,8 @@
     <ClInclude Include="Core\Memory\cSanStackManager.h">
       <Filter>Header Files\Core\Memory</Filter>
     </ClInclude>
+    <ClInclude Include="PlaneDetection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
