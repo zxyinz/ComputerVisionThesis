@@ -99,7 +99,9 @@
     <ClCompile Include="Graphics\SanGraphics.cpp" />
     <ClCompile Include="ML\cArtificialNeuralNetworkAlgorithm.cpp" />
     <ClCompile Include="ML\cDeepNeuralNetworkAlgorithm.cpp" />
+    <ClCompile Include="ML\cLeastSquareFittingAlgorithm.cpp" />
     <ClCompile Include="ML\cRestrictedRoltzmannMachineAlgorithm.cpp" />
+    <ClCompile Include="PlaneDetection.cpp" />
     <ClCompile Include="PlaneDetection_Main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +135,7 @@
     <ClInclude Include="ML\cArtificialNeuralNetworkAlgorithm.h" />
     <ClInclude Include="ML\cDeepNeuralNetworkAlgorithm.h" />
     <ClInclude Include="ML\cKMeansAlgorithm.h" />
+    <ClInclude Include="ML\cLeastSquareFittingAlgorithm.h" />
     <ClInclude Include="ML\cRestrictedBoltzmannMachineAlgorithm.h" />
     <ClInclude Include="PlaneDetection.h" />
     <ClInclude Include="RenderSystem.h" />

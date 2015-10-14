@@ -146,7 +146,7 @@ namespace San
 			{
 				return this->m_ClusterIndex;
 			};
-			CLUSTERSET<DataType> iGetClusterSet(const vector<DataType> &DataSet) const
+			CLUSTERSET<DataType> iGetClusterSet(const vector<DataSet> &DataSet) const
 			{
 				if (this->m_ClusterIndex.empty()){ return CLUSTERSET<DataType>(); }
 
